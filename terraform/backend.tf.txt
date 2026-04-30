@@ -1,0 +1,6 @@
+backend "azurerm" {
+    resource_group_name  = "triage-mgmt-rg"
+    storage_account_name = "triageterraformstate"
+    container_name       = "tfstate"
+    key                  = "be1.terraform.tfstate"
+  }

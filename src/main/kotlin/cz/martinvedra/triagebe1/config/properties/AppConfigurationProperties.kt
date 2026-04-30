@@ -6,7 +6,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 @ConfigurationProperties(PREFIX_NAME)
 class AppConfigurationProperties(
     val enabled: Boolean = true,
-    val be2: Be2Properties
+    val be2: Be2Properties,
+    val storage: Storage
 ) {
     companion object {
         const val PREFIX_NAME = "app"
@@ -14,5 +15,11 @@ class AppConfigurationProperties(
 
     class Be2Properties(
         val baseUrl: String
+    )
+
+    class Storage(
+        val localPath: String,
+        val azureConnectionString: String,
+        val containerName: String
     )
 }
