@@ -8,3 +8,7 @@ app:
   enabled: true
   be2:
     base-url: http://localhost:8082
+  storage:
+    local-path: storage/rates.json
+    azure-connection-string: ${CONNECTION_STRING:default_value}
+    container-name: "exchange-rates"

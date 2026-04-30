@@ -6,10 +6,17 @@ import org.springframework.stereotype.Service
 
 @Service
 class Be1Service(
-    private val client: Be2Client
+    private val client: Be2Client,
+    private val storageService: StorageService
 ) {
 
     fun getExchangeRate(): List<ExchangeRateDto> {
-            return client.callBe2getRates()
+            val rates = client.callBe2getRates()
+        if (rates.isNotEmpty()) {
+            storageService.saveRatesToFile(rates)
+            storageService.uploadToAzure(rates)
+        }
+
+        return rates
     }
 }

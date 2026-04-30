@@ -1,0 +1,14 @@
+name: 'Check Storage Cleanliness'
+description: 'Zkontroluje, zda složka storage neproklouzla do gitu'
+runs:
+  using: 'composite'
+  steps:
+    - name: Run check
+      shell: bash
+      run: |
+        if [ -d "storage" ]; then
+          echo "::error::Složka storage existuje v kořenovém adresáři! To by se nemělo stávat, má být v .gitignore."
+          exit 1
+        else
+          echo "Vše je čisté, složka storage nenalezena."
+        fi
