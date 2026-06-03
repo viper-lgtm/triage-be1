@@ -10,8 +10,11 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly" # Kontrola proběhne jednou týdně
+    ignore:
+      - dependency-name: "org.jetbrains.kotlin.*"
+        versions: [">= 2.4.0"]
 
-  # 2. Hlídání verzí GitHub Actions (To se ti hodí, když používáš checkout@v4 apod.)
+  # 2. Hlídání verzí GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
